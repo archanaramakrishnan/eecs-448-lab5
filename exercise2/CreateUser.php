@@ -1,6 +1,7 @@
 <?php
 
-function create() {
+function create()
+{
   $name = $_POST["userName"];
 
   if(empty($name))
@@ -9,7 +10,30 @@ function create() {
   }
   else
   {
-    echo "<br> Your user name: " . $name;
+    $mysqli = new mysqli("mysql.eecs.ku.edu", "archanaramakri", "oohaiP3t", "archanaramakri");
+
+    /* check connection */
+    if ($mysqli->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+
+    $query = "INSERT INTO Users(user_id)
+              VALUES('$name')";
+
+    if ($mysqli->query($query))
+    //if inserted successfully
+   {
+     echo "New user was successfully stored in the database!";
+   }
+   else
+   //if not, the user already exists
+   {
+     echo "This user already exists.";
+   }
+
+    /* close connection */
+    $mysqli->close();
   }
 }
 
