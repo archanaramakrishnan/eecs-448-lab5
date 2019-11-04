@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+  <link rel="stylesheet" type="text/css" href="../../eecs448-lab4/exercise3/style.css">
+</head>
 
+<body>
 <h3>Exercise 7</h3>
   <form action="DeletePost.php" method="post">
     <?php
@@ -14,6 +17,7 @@
     echo "<table>";
     echo "<th><strong>" . "Posts</strong></th>";
     echo "<th><strong>" . "Authors</strong></th>";
+    echo "<th><strong>" . "Delete?</strong></th>";
     if ($result=$mysqli->query($posts))
     {
       while ($row = $result->fetch_assoc())
@@ -32,6 +36,7 @@
 
     ?>
 
+     <input type="submit" value="Submit">
     <br><br>
   </form>
 
