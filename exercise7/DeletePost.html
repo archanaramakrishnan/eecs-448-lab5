@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Exercise 7</h3>
+  <form action="DeletePost.php" method="post">
+    <?php
+
+    $mysqli = new mysqli("mysql.eecs.ku.edu", "archanaramakri", "oohaiP3t", "archanaramakri");
+
+    $posts = "SELECT content, author_id
+              FROM Posts";
+
+    echo "<table>";
+    echo "<th><strong>" . "Posts</strong></th>";
+    echo "<th><strong>" . "Authors</strong></th>";
+    if ($result=$mysqli->query($posts))
+    {
+      while ($row = $result->fetch_assoc())
+      {
+        echo "<tr><td>" . $row["content"] . "</td>";
+        echo "<td>" . $row["author_id"] . "</td></tr>";
+      }
+    }
+    echo "</table>";
+
+
+    $result->free();
+
+    $mysqli->close();
+
+    ?>
+
+    <br><br>
+  </form>
+
+</body>
+</html>
