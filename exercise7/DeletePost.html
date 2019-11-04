@@ -8,7 +8,7 @@
 
     $mysqli = new mysqli("mysql.eecs.ku.edu", "archanaramakri", "oohaiP3t", "archanaramakri");
 
-    $posts = "SELECT content, author_id
+    $posts = "SELECT content, author_id, post_id
               FROM Posts";
 
     echo "<table>";
@@ -19,7 +19,8 @@
       while ($row = $result->fetch_assoc())
       {
         echo "<tr><td>" . $row["content"] . "</td>";
-        echo "<td>" . $row["author_id"] . "</td></tr>";
+        echo "<td>" . $row["author_id"] . "</td>";
+        echo "<td><input type='checkbox' name=" . $row["post_id"] . "></tr>";
       }
     }
     echo "</table>";
